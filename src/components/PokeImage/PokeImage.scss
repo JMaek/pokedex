@@ -1,0 +1,134 @@
+
+@import "../../scss/Colors.scss";
+$easeInOutQuad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+
+.PokeImage{
+  
+  &__pokeImage {
+    height: 450px;
+    width: 450px;
+    border: solid $highlight-color 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__moving{
+    position: relative;
+    height: 90%;
+    width: 90%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__shinyIcon{
+    position: absolute;
+    font-size: 1.3rem;
+    color:$secondary-text-color;
+    top: 20%;
+    left: 22%;
+  }
+
+  &__iconContainer{
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    background-color: $highlight-color;
+    border: $highlight-color solid;
+    border-radius: 50%;
+    margin: 20px;
+    box-shadow:$shiny-icon-glow;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  &__imageContainer{
+    background-color: rgba($highlight-color, 0.3);
+    position: relative;
+    width:85%;
+    height: 85%;
+    border: solid $highlight-color 4px;
+  }
+
+  &__img {
+    position: absolute;
+    width:100%;
+    height: 100%;
+    left: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  &__transparent{
+    position: absolute;
+    opacity: 0;  
+  }
+  
+  @mixin theme-colors($theme) {
+    @if $theme == "grass" {
+     background: #A8DDD3;
+     box-shadow:$grass-bar-glow;
+    } @else {
+      background: $highlight-color;
+      box-shadow:$shiny-icon-glow;
+    }
+  }
+  
+  & .bar{
+    @include theme-colors($theme: "" );
+    .PokeEntry.grass & {
+      @include theme-colors($theme: "grass");
+    }   
+     border-radius: 30px;
+    position: absolute;
+  }
+
+  & .left{
+    width: 6px;
+    animation: left 2s linear infinite;
+  }
+  .top{
+    height: 4px;
+   animation: top 2s linear infinite;
+  }
+ 
+  .right{
+    width: 4px;
+    animation: right 2s linear infinite;
+  }
+  
+  .bottom{
+    height: 4px;
+    animation: bottom 2s linear infinite;
+  }
+}
+
+
+
+@keyframes right{
+  0%  {height: 0; top: 0; left: 99%;}
+  20% {height: 100%; top: 0; left: 99%;}
+  40% {height: 0; top: 100%;left: 99%;}
+}
+
+ @keyframes bottom{
+    0%  {width: 0; top: 99%; left: 100%;}
+    20% {width: 0; top: 99%; left: 100%;}
+    40% {width: 100%; top:99%; left: 0px;}
+    60% {width: 0px; top:99%; left: 0px;}
+}
+
+@keyframes top{
+  0%  {width: 0; top: 0; left: 0;}
+  20% {width: 0; top: 0; left: 0;}
+  40% {width: 100%; top: 0; left: 0;}
+  60% {width: 0; top:0; left: 100%;}
+}
+
+@keyframes left{
+  0%  {height: 0; top: 100%; left: 0;}
+  20% {height: 100%; top: 0; left: 0;}
+  40% {height: 0; top: 0; left: 0;}
+}

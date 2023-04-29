@@ -1,0 +1,47 @@
+@import "../../scss/Colors.scss";
+
+.PokeEntry{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(https://img.freepik.com/free-vector/white-technology-background_23-2148390327.jpg?w=996&t=st=1682587002~exp=1682587602~hmac=88065ad457af4f66ec70011754f253d7aa079c821c810003c15b99711e75f45c);
+    background-size: cover;
+    z-index: -1;
+    background-color: $background-color;
+    background-blend-mode:color-burn;
+
+    &__infoPanel{
+        filter: drop-shadow( 5px 5px 3em rgba(255,255,255,0.8));
+
+        .infoContainer {
+            width: 384px;
+            height: 334px;
+            background-color: rgba($highlight-color, 0.3);
+            position: relative;
+          }
+          .infoContainer:before {
+            content: '';
+            width: 380px;
+            height: 330px;
+            background-color: rgba($background-color, 0.4);
+            display: block;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+          }
+          .infoContainer, .infoContainer:before {
+            clip-path: polygon(0 0, 51% 0, 100% 100%, 0 100%);
+
+          }
+
+          &.right{
+            transform: scale(-1, 1);
+          }
+    }
+
+    
+    
+
+}
